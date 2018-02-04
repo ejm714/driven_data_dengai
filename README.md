@@ -1,4 +1,4 @@
-dengai
+DengAi
 ==============================
 
 Predicting disease spread of dengue
