@@ -1,7 +1,14 @@
 DengAi
 ==============================
 
-Predicting disease spread of dengue
+Predicting the spread of dengue
+
+Notebooks are numbered and should be run in the following order:
+- 1. clean and visualize data
+- 2. train models
+- 3. generate predictions
+
+Final predictions are in the predictions.csv file in the models folder.
 
 Project Organization
 ------------
