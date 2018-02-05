@@ -7,10 +7,13 @@ def preprocess(data_path, labels_path=None):
     if labels_path:
         labels = pd.read_csv(labels_path)
         data = pd.merge(labels, features, how='left', on=['city', 'year', 'weekofyear'])
-    return data
+        return data
+    else:
+        results_cols = features[['city', 'year', 'weekofyear']]
+        return results_cols, features,
 
 
-def create_features(data):
+def create_features(data, filename):
     # city dummy
     data['sj'] = data['city'].map(lambda x: 1 if x=='sj' else 0)
     data.drop('city', axis=1, inplace = True)
@@ -24,8 +27,10 @@ def create_features(data):
 
     data = data.interpolate()
 
-    data.to_pickle('../data/processed/df.pkl')
+    data.to_pickle('../data/processed/' + filename + '.pkl')
+
+    return data
 
 
 # df = preprocess('../../data/raw/dengue_features_train.csv', '../../data/raw/dengue_labels_train.csv')
-# create_features(df)
+# df = create_features(df)
