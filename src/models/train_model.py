@@ -98,6 +98,7 @@ def run_grid_search_rf(X, y, xtrain_data, xtest_data, ytrain_data, ytest_data):
     print('Optimal Parameters: ', train_fit.best_params_)
     return train_fit.best_params_
 
+
 def calculate_mae_for_train(best_params, xtrain_data, xtest_data, ytrain_data, yest_data):
     final_model = RandomForestRegressor(**best_params, random_state=42)
     final_model.fit(xtrain_data, ytrain_data)
@@ -113,8 +114,22 @@ def fit_final_model(best_params, X, y):
     print("Mean absolute error: " + str(mean_absolute_error(y, y_pred)))
     return fitted_model
 
+
 def create_results_df(model, data, X):
     results_df = data[['total_cases', 'sj']]
     # predict
     results_df['predictions'] = model.predict(X)
     return results_df
+
+
+
+# X, y, X_train, X_test, y_train, y_test = prep_x_and_y(df[df.sj==0])
+# iq_best_params = run_grid_search_rf(X, y, X_train, X_test, y_train, y_test)
+# iq_model = fit_final_model(iq_best_params, X, y)
+#
+# X, y, X_train, X_test, y_train, y_test = prep_x_and_y(df[df.sj==1])
+# sj_best_params = run_grid_search_rf(X, y, X_train, X_test, y_train, y_test)
+# sj_model = fit_final_model(sj_best_params, X, y)
+#
+# joblib.dump(iq_model, '../../models/iq_model.pkl')
+# joblib.dump(sj_model, '../../models/sj_model.pkl')

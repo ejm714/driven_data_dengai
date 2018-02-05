@@ -17,3 +17,10 @@ def generate_predictions(data, sjmodel, iqmodel):
     iq_pred = iqmodel.predict(iq).tolist()
 
     return sj_pred + iq_pred
+
+
+
+# sj_model, iq_model = load_models('../../models/sj_model.pkl', '../../models/iq_model.pkl')
+# cases_pred = generate_predictions(test_df, sj_model, iq_model)
+# results_cols['total_cases'] = [round(x) for x in cases_pred]
+# results_cols.to_csv('../../models/predictions.csv', index = False)

@@ -33,4 +33,7 @@ def create_features(data, filename):
 
 
 # df = preprocess('../../data/raw/dengue_features_train.csv', '../../data/raw/dengue_labels_train.csv')
-# df = create_features(df)
+# df = create_features(df, 'train')
+#
+# results_cols, test_df = preprocess('../../data/raw/dengue_features_test.csv')
+# test_df = create_features(df, 'test')
